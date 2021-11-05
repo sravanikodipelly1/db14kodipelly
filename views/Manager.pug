@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  - var results = [{Id:"001", Name:"rahul", Branch:"chicago"},{Id:"002", Name: "radha", Branch:"maryville"},{Id:"003", Name:"sahithi", Branch:"irving"}]
+  div(class="container-fluid")
+   div(class="row" )
+   each res,index in results
+      div(class="col-sm-2" onclick=`buy(${index})`) Id: #{res.Id}  
+      div(class="col-sm-2" onclick=`buy(${index})`) Name: #{res.Name}
+      div(class="col-sm-2" onclick=`buy(${index})`) Branch: #{res.Branch}
+  script.
+    let BranchNumber=0                
+      function buy(BranchNumber)
+      {
+        
+        alert(`your current working Branch ${BranchNumber+1}`)
+      }
+  
