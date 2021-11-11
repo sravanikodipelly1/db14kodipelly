@@ -1,9 +1,20 @@
 var pin = require('../models/pin'); 
  
 // List of all pin 
-exports.pin_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: pin list'); 
-}; 
+//exports.pin_list = function(req, res) { 
+  //  res.send('NOT IMPLEMENTED: pin list'); 
+//};
+// List of all Costumes 
+exports.pin_list = async function(req, res) { 
+    try{ 
+        thepin = await pin.find(); 
+        res.send(thepin); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};  
  
 // for a specific pin. 
 exports.pin_detail = function(req, res) { 
