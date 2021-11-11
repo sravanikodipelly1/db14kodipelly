@@ -35,3 +35,15 @@ exports.pin_delete = function(req, res) {
 exports.pin_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: pin update PUT' + req.params.id); 
 }; 
+// VIEWS 
+// Handle a show all view 
+exports.pin_view_all_Page = async function(req, res) { 
+    try{ 
+        thepin = await pin.find(); 
+        res.render('pin', { title: 'pin Search Results', results: thepin }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 

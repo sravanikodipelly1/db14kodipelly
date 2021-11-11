@@ -9,7 +9,7 @@ var pin_controller = require('../controllers/pin');
  
 // GET resources base. 
 router.get('/', api_controller.api); 
- 
+router.get('/', pin_controller.pin_view_all_Page ); 
 /// pin ROUTES /// 
  
 // POST request for creating a pin.  
