@@ -22,8 +22,28 @@ exports.pin_detail = function(req, res) {
 }; 
  
 // Handle pin create on POST. 
-exports.pin_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: pin create POST'); 
+//exports.pin_create_post = function(req, res) { 
+  //  res.send('NOT IMPLEMENTED: pin create POST'); 
+//}; 
+ // Handle Costume create on POST. 
+exports.pin_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new pin(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    document.pin_type = req.body.pin_type; 
+    document.cost = req.body.cost; 
+    document.size = req.body.size; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // Handle pin delete form on DELETE. 
