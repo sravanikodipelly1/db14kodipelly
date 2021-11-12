@@ -1,6 +1,14 @@
 extends layout
 
-block content 
-
- h1 = title 
-  - let pin=results
+block content
+  h1= title
+    - let pin  = results 
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each pin,index in horses 
+        div(class="col-sm-2" OnClick=`buy(${index})` ) #{pin.type} - #{pin.size} 
+  script.
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }

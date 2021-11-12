@@ -6,4 +6,4 @@ const pinSchema = mongoose.Schema({
 }) 
  
 module.exports = mongoose.model("pin", 
-pinSchema) 
+pinSchema)
