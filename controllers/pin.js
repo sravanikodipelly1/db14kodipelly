@@ -22,8 +22,8 @@ exports.pin_create_post = async function (req, res) {
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
     
-    document.pinType = req.body.pinType;
-    document.pinCost = req.body.pinsize;
+    document.pin_type = req.body.pin_type;
+    document.size = req.body.size;
     try {
         let result = await document.save();
         res.send(result);
@@ -53,7 +53,7 @@ ${JSON.stringify(req.body)}`)
  // Do updates of properties
  
  if(req.body.pin_type) toUpdate.pin_type = req.body.pin_type;
- if(req.body.pinsize) toUpdate.pinsize = req.body.pinsize;
+ if(req.body.size) toUpdate.size = req.body.size;
  let result = await toUpdate.save();
  console.log("Sucess " + result)
  res.send(result)
