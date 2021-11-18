@@ -1,0 +1,35 @@
+extends layout
+
+block content
+ h1= title
+ form(id='pinForm', action="/resource/pin", method="POST")
+    div.form-group
+    div(class="row g-3 align-items-center")
+      div(class="col-1")
+         label.pinAttr(for='pin_type', class="col-form-label") pin_type
+      div(class="col-auto")
+         input#pin_type(type='text', name='pin_type',class="form-control")
+    div.form-group
+    div(class="row g-3 align-items-center")
+      div(class="col-1")
+         label.pinAttr(for='size',class="col-form-label") size
+      div(class="col-auto")
+         input#size(type='text', name='size',class="form-control")
+    input(type="submit",class="btn btn-primary")
+ script.
+    document.forms['pinForm'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    // TODO do something here to show user that form is being submitted
+    fetch(event.target.action, {
+    method: 'POST',
+    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+    }).then((resp) => {
+    return resp.json(); // or resp.text() or whatever the server sends
+    }).then((body) => {
+    alert("Save succeded")
+    // TODO handle body
+    }).catch((error) => {
+    // TODO handle error
+    alert("Save failed " + error )
+    });
+    });

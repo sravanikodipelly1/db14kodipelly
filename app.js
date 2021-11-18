@@ -13,6 +13,7 @@ var ManagerRouter = require('./routes/Manager');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+var pinRouter = require('./routes/pin');
 const mongoose = require('mongoose');
 var db = mongoose.connection;
 
@@ -67,6 +68,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/pin', pinRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/Manager', ManagerRouter);
