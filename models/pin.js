@@ -1,7 +1,13 @@
 const mongoose = require("mongoose") 
 const pinSchema = mongoose.Schema({ 
- pin_type: String, 
- size: String, 
+ pin_type: {
+     type: String,
+     minlength: 3
+ }, 
+ size: {
+     type: String,
+     maxlength: 10
+ }, 
  
 }) 
  

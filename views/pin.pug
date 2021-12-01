@@ -11,11 +11,17 @@ block content
   div(class='container-fluid')
     div(class='row n-1')
     div(class="row row-cols-1 row-cols-sm-2 g-6")
+      - let destination3 = `dispatch(\"/pin/create\")`
+      button.btn( class="btn-primary", class="btn-toolbar", style="width: 150px", onclick= destination2) Create
       each o, index in items 
        - let destination = `dispatch(\"/pin/update?id=${o._id}\")` 
+       - let destination1 = `dispatch(\"/pin/detail?id=${o._id}\")` 
+       - let destination2 = `dispatch(\"/pin/delete?id=${o._id}\")` 
         div(class="row-sm-2", class="m-1") Pin Type is #{o.pin_type} Pin Size is (#{o.size})
         //div(class="card text-dark bg-warning mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') 
         button.btn( class="btn-primary" class="btn-toolbar", onclick= destination) Update
+        button.btn( class="btn-primary" class="btn-toolbar", onclick= destination1) Detail
+        button.btn( class="btn-primary" class="btn-toolbar", onclick= destination2) Delete
   script. 
     function dispatch(path){ 
       window.location.href=path 

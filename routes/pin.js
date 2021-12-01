@@ -14,12 +14,12 @@ const secured = (req, res, next) => {
 /* GET pins */
 router.get('/', pin_controllers.pin_view_all_Page );
 /* GET detail pin page */
-router.get('/detail', pin_controllers.pin_view_one_Page);
+router.get('/detail',  pin_controllers.pin_view_one_Page);
 /* GET create pin page */
-router.get('/create', pin_controllers.pin_create_Page);
+router.get('/create', secured, pin_controllers.pin_create_Page);
 /* GET create update page */
 router.get('/update', secured, pin_controllers.pin_update_Page);
 /* GET create pin page */
-router.get('/delete', pin_controllers.pin_delete_Page);
+router.get('/delete', secured, pin_controllers.pin_delete_Page);
 
 module.exports = router;
